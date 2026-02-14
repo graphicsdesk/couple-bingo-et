@@ -1,0 +1,53 @@
+{
+  "plugins": {
+    "posthtml-include": {
+      "root": "./src"
+    },
+    "posthtml-expressions": {
+      "root": "./src/partials",
+      "locals": {
+        "top": [],
+        "body": [
+          {
+            "type": "text",
+            "value": "It’s finally Valentine’s Day, the special day of love. The one time a year when everything’s decked out in pink, reservations run out faster than a Ticketmaster queue, and you can show just how much love and adoration that you have for your partner. Maybe everything goes perfectly? Maybe someone accidentally books dinner for the wrong day? Or maybe someone from your partner’s distant past decided today was a great day to check in? Regardless of how you plan on spending your holiday of love, or what happened with that special someone, we’ve made a Valentine’s Day couples bingo. Play with your partner and see if you’re both the lucky winners. Have these happened to you:"
+          },
+          {
+            "type": "text",
+            "value": "At the end of the night, whether you hit all the squares, got a bingo, or didn’t hit any at all, that’s the beauty of Valentine’s Day: it’s about the appreciation of your loved ones, and these displays of affection aren’t meant to be perfect. After all, love isn’t about perfection; it’s about showing up. And if you laughed, communicated, made it through together, and had a great day, you already won."
+          },
+          {
+            "type": "graphic",
+            "value": {
+              "asset": "couplebingo.html"
+            }
+          },
+          {
+            "type": "text",
+            "value": "Terrah Garner is a Staff Writer and can be contacted at <a href=\"mailto:terrah.garner@columbiaspectator.com\">terrah.garner@columbiaspectator.com</a>. Her favorite thing about Valentine’s Day is the pink seasonal lattes. You can never go wrong with pink. Follow Spectrum on <a href=\"https://www.instagram.com/cuspectrum/\">X</a> <a href=\"https://twitter.com/cuspectrum?lang=en\">@CUSpectrum</a>."
+          },
+          {
+            "type": "text",
+            "value": "<i>Deputy Data Visualization Editor Emily Ta can be contacted at </i><a href=\"mailto:emily.ta@columbiaspectator.com\"><i>emily.ta@columbiaspectator.com</i></a><i>. Follow Spectator on X </i><a href=\"https://twitter.com/columbiaspec?lang=en\"><i>@ColumbiaSpec</i></a><i>.</i>"
+          },
+          {
+            "type": "text",
+            "value": "<b><i>Want to keep up with breaking news? Subscribe to our </i></b><a href=\"https://columbiaspectator.us4.list-manage.com/subscribe?u=a3d2eeb1ae5560ca04f82f042&id=e51c51d62d\"><b><i>email newsletter </i></b></a><b><i>and like Spectator on </i></b><a href=\"https://www.facebook.com/columbiaspectator\"><b><i>Facebook</i></b></a><b><i>. </i></b>"
+          }
+        ],
+        "headline": "The couples edition: Valentine’s Day bingo",
+        "dek": "",
+        "date": "February 13, 2026",
+        "byline": "By <a href=\"https://www.columbiaspectator.com/contributors/terrah-garner/\">Terrah Garner</a>",
+        "byline2": "Development by <a href=\"https://www.columbiaspectator.com/contributors/emily-ta/\">Emily Ta</a>",
+        "cover_asset": "https://cloudfront-us-east-1.images.arcpublishing.com/spectator/W4AIQBBQM5G6PLOGPKVL2A2XRE.jpg",
+        "cover_caption": "Ming Yuan / Columbia Daily Spectator",
+        "USE_NEWS_NAV": true,
+        "USE_EYE_NAV": false,
+        "USE_COVER_HED": false,
+        "IS_EMBED": false,
+        "DOC_URL": "https://docs.google.com/document/d/1r1NxuKBTHIOH7KVjrp8MdL_f_oQuOko8vpx-JQ_wndE/edit?usp=sharing"
+      }
+    }
+  }
+}
