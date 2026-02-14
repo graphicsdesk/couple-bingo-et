@@ -1,0 +1,498 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>The couples edition: Valentine's Day bingo</title>
+    <link rel="stylesheet" href="https://spectator-static-assets.s3.amazonaws.com/newhous-et/styles.164d45a1.css">
+    <link rel="shortcut icon" href="https://www.columbiaspectator.com/pb/resources/img/CDS_Favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+.bingo-embed{ position: relative; }
+.bingo-embed .celebrate-heart{
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  font-size: var(--s);
+  opacity: 0;
+  pointer-events: none;
+  animation: heart-pop 900ms ease-out forwards;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.15));
+}
+@keyframes heart-pop{
+  0%   { opacity: 0; transform: translate(-50%,-50%) scale(.4); }
+  15%  { opacity: 1; transform: translate(-50%,-60%) scale(1); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% - var(--dy))) scale(.8); }
+}
+/* Scoped fixes for Spectate embed */
+.bingo-embed{
+  font-family: Roboto, Helvetica, Arial, sans-serif, 'Tangerine', cursive;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.bingo-embed .container{
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bingo-embed h1,
+.bingo-embed p{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+:root {
+    --cell-size: min(12vmin, 120px);
+    --gap: 10px;
+    --blue-checked: #e68cbf;
+    --cell-bg: #fec5e5;
+    --cell-border: #d78ac9;
+    --font-family: Roboto, Helvetica, Arial, sans-serif, 'Tangerine', cursive;
+}
+
+.bingo-embed .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.bingo-embed h1 {
+    margin: 0 0 6px 0;
+    font-size: 4rem;
+    text-align: center;
+    font-family: "Tangerine", cursive;
+}
+
+.bingo-embed p {
+    margin: 0 0 12px 0;
+    text-align: center;
+    color: #444;
+}
+
+.bingo-embed .board {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--gap);
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    background-color: #9e4244;
+    border-radius: 10px;
+    box-sizing: border-box;
+    justify-items: center;
+}
+
+.bingo-embed .cell {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background: var(--cell-bg);
+    border: 2px solid pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.4rem;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 180ms ease, transform 120ms ease, box-shadow 120ms ease;
+    font-size: 1rem;
+    line-height: 1.1;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.bingo-embed .cell:active {
+    transform: translateY(1px);
+}
+
+.bingo-embed .cell.checked {
+    background: #f78db0;
+    color: white;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+.bingo-embed .cell.free {
+    background: linear-gradient(180deg, #fff 0%, #f2f7ff 100%);
+    border-style: dashed;
+    color: #333;
+    font-weight: 600;
+}
+
+.bingo-embed .controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.bingo-embed .btn {
+    background: #0b2b36;
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.bingo-embed .btn.ghost {
+    background: transparent;
+    color: #0b2b36;
+    border: 2px solid #d6d6d6;
+}
+
+@media (max-width: 600px) {
+    .bingo-embed .board {
+        gap: 6px;
+        padding: 8px;
+    }
+
+    .bingo-embed .cell {
+        width: clamp(50px, 18vw, 100px);
+    }
+
+    .bingo-embed h1 {
+        margin: 0 0 6px 0;
+        font-size: 2rem;
+        text-align: center;
+        font-family: "Tangerine", cursive;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --gap: 5px;
+    }
+
+    .bingo-embed .board {
+        padding: 6px;
+    }
+
+    .bingo-embed .cell {
+        font-size: 0.6rem;
+        padding: 0.2rem;
+        border-radius: 6px;
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+  <div id="navbar" class="news-navbar hide-news-navbar">
+    <a id="cds-logo-container" href="https://www.columbiaspectator.com">
+      <img id="cds-logo" src="https://s3.amazonaws.com/spec-imagehosting/spectator-logo.png">
+    </a>
+  </div>
+
+  <div class="story-top"></div>
+
+  <div class="cover cover-hed">
+    <img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/W4AIQBBQM5G6PLOGPKVL2A2XRE.jpg">
+    <header>
+      <h1 id="headline">The couples edition: Valentine's Day bingo</h1>
+      <h1 id="dek"></h1>
+      <p class="byline">By <a href="https://www.columbiaspectator.com/contributors/terrah-garner/">Terrah Garner</a></p>
+      <p class="byline">Development by <a href="https://www.columbiaspectator.com/contributors/emily-ta/">Emily Ta</a></p>
+      <p class="pub-date">February 13, 2026</p>
+    </header>
+  </div>
+
+  <p class="cover-caption">Ming Yuan / Columbia Daily Spectator</p>
+
+  <div class="g-body">
+    <p class="inline-credits"></p>
+  </div>
+
+  <div class="story">
+    <p class="g-body paragraph">
+      It's finally Valentine's Day, the special day of love. The one time a year when everything's decked out in pink, reservations run out faster than a Ticketmaster queue, and you can show just how much love and adoration that you have for your partner. Maybe everything goes perfectly? Maybe someone accidentally books dinner for the wrong day? Or maybe someone from your partner's distant past decided today was a great day to check in? Regardless of how you plan on spending your holiday of love, or what happened with that special someone, we've made a Valentine's Day couples bingo. Play with your partner and see if you're both the lucky winners. Have these happened to you:
+    </p>
+
+    <div class="graphic">
+      <div class="bingo-embed">
+        <div class="container">
+          <h1>The couple's edition: Valentine's Day bingo</h1>
+          <p>Click on the tasks as you complete them.</p>
+
+          <div id="board" class="board" aria-label="The couple's edition: Valentine's Day bingo"></div>
+
+          <div class="controls">
+            <button id="reset" class="btn ghost" title="Clear all marks">Reset</button>
+          </div>
+        </div>
+
+        <script src="https://unpkg.com/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+        <script>
+var items = [
+  "Your partner said \"I don't know\" when you ask what they want to eat",
+  "You've seen way too many Valentine's Day stories on Instagram",
+  "Someone forgot to make reservations",
+  "You wore red, pink, or hearts unintentionally",
+  "One of you mentioned how expensive everything is",
+  "Your partner bought you flowers (or swore the flowers were \"on the way\")",
+  "You argued over where to go for dinner",
+  "Someone said, \"We don't need gifts\" (lies were told)",
+  "You took at least one obligatory couple pic",
+  "Someone said, \"We should've stayed in.\"",
+  "You split the dessert even though you both wanted your own",
+  "One of you planned everything, and the other one just showed up",
+  "Your partner bought you chocolates",
+  "Your plans didn't go according to plan",
+  "Your partner made reservations for the wrong day",
+  "Someone cried—happy or sad tears",
+  "You reminisced about how you met",
+  "One of you said, \"I'm full,\" and then kept on eating",
+  "Someone got annoyed over a tiny issue",
+  "You saw another couple at the restaurant with a plate you wish you ordered",
+  "Your ex or your ex's situationship checked your page",
+  "You talked about future trips or plans",
+  "You fell asleep before the night was over",
+  "You both agreed to be each other's \"forever Valentine.\""
+];
+
+var STORAGE_KEY = "couple_bingo_state_v1";
+var boardEl = document.getElementById("board");
+
+function loadState() {
+  try {
+    var raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return Array(25).fill(false);
+    var parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed) || parsed.length !== 25) return Array(25).fill(false);
+    return parsed;
+  } catch (e) {
+    console.warn("Could not load state:", e);
+    return Array(25).fill(false);
+  }
+}
+
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+var state = loadState();
+var itemIndex = 0;
+
+for (var i = 0; i < 25; i++) {
+  (function(idx) {
+    var cell = document.createElement("button");
+    cell.className = "cell";
+    cell.type = "button";
+    cell.setAttribute("data-index", idx);
+    cell.setAttribute("aria-pressed", "false");
+
+    if (idx === 12) {
+      cell.classList.add("free");
+      cell.id = "free-cell";
+      cell.innerHTML = "<div style='font-size:1.4rem'>💕💕<br>You're together on Valentine's Day</div>";
+      cell.addEventListener("click", function(e) {
+        cell.animate([
+          {transform: "scale(1)"},
+          {transform: "scale(0.98)"},
+          {transform: "scale(1)"}
+        ], {duration: 160});
+      });
+      state[idx] = false;
+    } else {
+      var text = items[itemIndex++] || "";
+      cell.innerHTML = '<span class="label">' + escapeHtml(text) + '</span>';
+      
+      if (state[idx]) {
+        cell.classList.add("checked");
+        cell.setAttribute("aria-pressed", "true");
+      }
+      
+      cell.addEventListener("click", function() {
+        var cellIdx = Number(cell.getAttribute("data-index"));
+        var checked = cell.classList.toggle("checked");
+        cell.setAttribute("aria-pressed", checked ? "true" : "false");
+        state[cellIdx] = checked;
+        saveState(state);
+        checkForBingo();
+      });
+    }
+
+    boardEl.appendChild(cell);
+  })(i);
+}
+
+var allCells = Array.from(boardEl.querySelectorAll(".cell"));
+var confettiFired = false;
+
+function isMarked(i) {
+  if (i === 12) return true;
+  return allCells[i].classList.contains("checked");
+}
+
+var BINGO_LINES = [
+  [0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [10, 11, 12, 13, 14], [15, 16, 17, 18, 19], [20, 21, 22, 23, 24],
+  [0, 5, 10, 15, 20], [1, 6, 11, 16, 21], [2, 7, 12, 17, 22], [3, 8, 13, 18, 23], [4, 9, 14, 19, 24],
+  [0, 6, 12, 18, 24], [4, 8, 12, 16, 20]
+];
+
+function clearBingoHighlights() {
+  allCells.forEach(function(c) { return c.classList.remove("bingo"); });
+}
+
+function getCompletedLines() {
+  return BINGO_LINES.filter(function(line) {
+    return line.every(isMarked);
+  });
+}
+
+function highlightCompletedLines(lines) {
+  lines.forEach(function(line) {
+    return line.forEach(function(i) {
+      return allCells[i].classList.add("bingo");
+    });
+  });
+}
+
+function fireConfetti() {
+  if (typeof confetti === "function") {
+    try {
+      var heart = confetti.shapeFromPath({
+        path: "M10 30 C 10 20, 20 10, 30 10 C 40 10, 50 20, 50 30 C 50 45, 30 60, 30 60 C 30 60, 10 45, 10 30 Z",
+        matrix: [0.25, 0, 0, 0.25, 0, 0]
+      });
+      confetti({ shapes: [heart], particleCount: 120, spread: 95, startVelocity: 35, origin: {y: 0.7} });
+    } catch(err) {
+      confetti({ particleCount: 180, spread: 80, origin: {y: 0.7} });
+    }
+    setTimeout(function() { 
+      confetti({ shapes: [heart], particleCount: 120, spread: 120, origin: {y: 0.6} }); 
+    }, 150);
+    return;
+  }
+
+  // Fallback: burst hearts inside the bingo embed
+  var root = document.querySelector(".bingo-embed");
+  if(!root) return;
+  for(var i=0; i<42; i++){
+    var sp = document.createElement("span");
+    sp.className = "celebrate-heart";
+    sp.textContent = "💕💕";
+    var x = 10 + Math.random()*80;
+    var y = 15 + Math.random()*60;
+    var dx = (Math.random()*2-1) * 240;
+    var dy = 120 + Math.random()*220;
+    var s  = 16 + Math.random()*22;
+    sp.style.setProperty("--x", x + "%");
+    sp.style.setProperty("--y", y + "%");
+    sp.style.setProperty("--dx", dx + "px");
+    sp.style.setProperty("--dy", dy + "px");
+    sp.style.setProperty("--s", s + "px");
+    root.appendChild(sp);
+    (function(node){
+      node.addEventListener("animationend", function(){ node.remove(); }, { once:true });
+    })(sp);
+  }
+}
+
+function checkForBingo() {
+  var completed = getCompletedLines();
+  clearBingoHighlights();
+  if (completed.length > 0) {
+    highlightCompletedLines(completed);
+    if (!confettiFired) {
+      confettiFired = true;
+      fireConfetti();
+    }
+  }
+}
+
+function escapeHtml(s) {
+  return s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+}
+
+document.getElementById("reset").addEventListener("click", function() {
+  for (var i = 0; i < 25; i++) {
+    if (i === 12) continue;
+    var btn = boardEl.querySelector('[data-index="' + i + '"]');
+    if (btn) {
+      btn.classList.remove("checked");
+      btn.setAttribute("aria-pressed", "false");
+    }
+    state[i] = false;
+  }
+  saveState(state);
+  confettiFired = false;
+  clearBingoHighlights();
+});
+
+function resizeAllText() {
+  var cells = boardEl.querySelectorAll(".cell:not(.free)");
+  var minSize = Infinity;
+  cells.forEach(function(cell) {
+    var span = cell.querySelector(".label");
+    if (!span) return;
+    span.style.fontSize = "16px";
+    var boxHeight = cell.clientHeight - 8;
+    var boxWidth = cell.clientWidth - 8;
+    var size = 16;
+    while ((span.scrollHeight > boxHeight || span.scrollWidth > boxWidth) && size > 8) {
+      size -= 0.5;
+      span.style.fontSize = size + "px";
+    }
+    if (size < minSize) minSize = size;
+  });
+  cells.forEach(function(cell) {
+    var span = cell.querySelector(".label");
+    if (span) span.style.fontSize = minSize + "px";
+  });
+}
+
+window.addEventListener("load", resizeAllText);
+window.addEventListener("resize", resizeAllText);
+checkForBingo();
+        </script>
+      </div>
+    </div>
+
+    <p class="g-body paragraph">
+      At the end of the night, whether you hit all the squares, got a bingo, or didn't hit any at all, that's the beauty of Valentine's Day: it's about the appreciation of your loved ones, and these displays of affection aren't meant to be perfect. After all, love isn't about perfection; it's about showing up. And if you laughed, communicated, made it through together, and had a great day, you already won.
+    </p>
+
+    <p class="g-body paragraph">
+      Terrah Garner is a Staff Writer and can be contacted at <a href="mailto:terrah.garner@columbiaspectator.com">terrah.garner@columbiaspectator.com</a>. Her favorite thing about Valentine's Day is the pink seasonal lattes. You can never go wrong with pink. Follow Spectrum on <a href="https://www.instagram.com/cuspectrum/">X</a> <a href="https://twitter.com/cuspectrum?lang=en">@CUSpectrum</a>.
+    </p>
+
+    <p class="g-body paragraph">
+      <i>Deputy Data Visualization Editor Emily Ta can be contacted at </i><a href="mailto:emily.ta@columbiaspectator.com"><i>emily.ta@columbiaspectator.com</i></a><i>. Follow Spectator on X </i><a href="https://twitter.com/columbiaspec?lang=en"><i>@ColumbiaSpec</i></a><i>.</i>
+    </p>
+
+    <p class="g-body paragraph">
+      <b><i>Want to keep up with breaking news? Subscribe to our </i></b><a href="https://columbiaspectator.us4.list-manage.com/subscribe?u=a3d2eeb1ae5560ca04f82f042&id=e51c51d62d"><b><i>email newsletter </i></b></a><b><i>and like Spectator on </i></b><a href="https://www.facebook.com/columbiaspectator"><b><i>Facebook</i></b></a><b><i>. </i></b>
+    </p>
+  </div>
+
+  <div class="footer g-body">
+    <div class="article-credits">
+      <p>
+        Produced with <a href="https://github.com/graphicsdesk/spectate">Spectate</a> by <a href="https://www.columbiaspectator.com/contributors/emily-ta/">Emily Ta</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="https://spectator-static-assets.s3.amazonaws.com/newhous-et/script.75da7f30.js"></script>
+</body>
+</html>
